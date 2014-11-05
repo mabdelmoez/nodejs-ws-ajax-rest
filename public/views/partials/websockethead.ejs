@@ -1,0 +1,37 @@
+<!-- public/views/partials/websockethead.ejs -->
+
+<meta charset="UTF-8">
+<script type="text/javascript">
+
+/* set <br /> for i.e and \r\n for FF, GC
+ff and gc return true
+ie returns false for this jquery.support test
+*/
+function get_line_break() {
+ 
+    return $.support.htmlSerialize ? "\r\n" : '<br />';
+ 
+}
+
+var line_break = get_line_break();
+
+$(document).ready(function () {
+
+	$('#submit').click(function(event){
+		event.preventDefault();
+	})
+	
+	var websocket = new WebSocket('ws://127.0.0.1:5000/appws');
+
+	$('#submit').click(function() {
+		websocket.send(JSON.stringify({username:$('#username').val(), message: $('#message').val()}));
+	});
+
+	websocket.onmessage = function (evt) 
+	{ 
+	   $('#responseMsg').append(evt.data + line_break);
+	};
+});
+</script>
+
+

@@ -1,0 +1,44 @@
+<!-- public/views/partials/ajaxhead.ejs -->
+
+<meta charset="UTF-8">
+<script type="text/javascript">
+
+
+/* set <br /> for i.e and \r\n for FF, GC
+ff and gc return true
+ie returns false for this jquery.support test
+*/
+function get_line_break() {
+ 
+    return $.support.htmlSerialize ? "\r\n" : '<br />';
+ 
+}
+
+
+var line_break = get_line_break();
+	
+	
+$(document).ready(function () {
+	$('#submit').click(function(event){
+		event.preventDefault();
+		$.ajax({
+		   url: 'http://127.0.0.1:5000/api/messaging',  
+		   async: true,
+		   type: 'POST',
+		   dataType: 'json',
+		   data:JSON.stringify({username:$('#username').val(), message: $('#message').val()})
+		   })
+		    .done(function(response) {
+			console.log( "success" );
+			$('#responseMsg').append(response + line_break);
+			})
+			.fail(function() {
+			console.log( "error" );
+			})
+			.always(function() {
+			console.log( "complete" );
+        });
+	});
+	
+});
+</script>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Server Connect | Project XYZ</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<link href="../..//stylesheets/style.css" rel="stylesheet">
+	<% include ../partials/websockethead %>
+</head>
+
+<body>
+	
+	<div class="wrapper">
+		<div id="main" style="padding:50px 0 0 0;">
+		
+		<!-- Form -->
+		<form id="contact-form" action="/" method="post">
+			<h3>Welcome <%= username %> to XYZ Project</h3>
+			<h4>Please write your username and a message to send to the server !</h4>
+			<div>
+				<label>
+					<span>Username: (required)</span>
+					<input id="username" placeholder="Please enter your name" type="text" tabindex="1" required autofocus>
+				</label>
+			</div>
+			<div>
+				<label>
+					<span>Message: (required)</span>
+					<input id="message" placeholder="please enter your message to the server" type="text" tabindex="2" required>
+				</label>
+			</div>
+			<div>
+				<button id="submit" name="submit" type="submit" id="contact-submit">Send Message</button>
+			</div>
+		</form>
+		<!-- /Form -->
+		<div>
+			<label>
+				<span>Server response:</span>
+				<textarea id="responseMsg" rows="4" cols="60" tabindex="3" readonly></textarea>
+			</label>
+		</div>
+		</div>
+	</div>	
+</body>
+</html>
