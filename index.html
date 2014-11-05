@@ -1,59 +1,16 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>insert page</title>
-<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function () {
-	var websocket = new WebSocket('ws://127.0.0.1:5000');
-
-	$('#send').click(function() {
-		websocket.send($('input').val());
-	});
-
-	websocket.onmessage = function (evt) 
-	{ 
-	   $('#output').val(evt.data);
-	};
-	
-	$('#sendajax').click(function(){
-		
-		$.ajax({
-		   url: 'http://127.0.0.1:5000/messaging',  
-		   async: true,
-		   type: 'POST',
-		   dataType: 'json',
-		   data:JSON.stringify({message: "TEST"})
-		   })
-		    .done(function(response) {
-			console.log( "success" );
-			console.log( response );
-			})
-			.fail(function() {
-			console.log( "error" );
-			})
-			.always(function() {
-			console.log( "complete" );
-        });
-	});
-	
-});
-
-
-
-</script>
+<title>Home | Project XYZ</title>
+ <link rel="stylesheet" type="text/css" href="public/stylesheets/home.css">
 </head>
-
 <body>
-<p>
-Result: <output id="output"> </output>
-</p>
-
-<input type=text id="input" />
-
-<input type="button" id="send" value="send" />
-<input type="button" id="sendajax" value="sendajax" />
+<div class="container">
+    <span><h2>Please select the technique to request the server</h2></span>
+    <br/>
+    <div class="block"><a href="#"><img src="http://tech.wordnik.com/wp-content/uploads/2012/10/websockets-logo.png" width="100px" height="100px"/></a></div>
+    <div class="block"><a href="#"><img src="http://www.globalemployees.com/images/ajax_logo.png" width="100px" height="100px"/></a></div>
+</div>
 </body>
-
 </html>
