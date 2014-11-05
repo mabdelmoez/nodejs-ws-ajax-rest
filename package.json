@@ -1,0 +1,11 @@
+{
+	"name":"NodeJS",
+	"version":"0.0.1",
+	"private":"true",
+	"dependencies":{
+		"ws":"0.4.x",
+		"express":"4.10.1",
+		"body-parser":"1.9.2",
+		"ejs":"1.0.0"
+	}
+}
