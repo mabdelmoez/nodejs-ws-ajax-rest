@@ -69,7 +69,7 @@ var sessionHandler = session({ secret: 'secret', store: store, saveUninitialized
 	  		 res.redirect('/');
 	  	}
 
-    });
+});
 
    
 		
@@ -112,7 +112,7 @@ var wss = new WebSocketServer({server: app.server});
 	          } 
 	          else
 	          {
-	              ws.session = session; 
+	              ws.session = session; //store the session in the ws object
 	          }
 	        });
       } else {

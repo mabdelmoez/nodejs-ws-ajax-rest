@@ -1,16 +1,18 @@
 <!-- public/views/partials/websockethead.ejs -->
 
 <meta charset="UTF-8">
+
 <script type="text/javascript">
 
 $(document).ready(function () {
-	$('#submit').click(function(event){
-		event.preventDefault();
-	})
+    
 	var websocket = new WebSocket('ws://127.0.0.1:5000/appws');
-
-	$('#submit').click(function() {
-		websocket.send(JSON.stringify({username:$('#username').val(), message: $('#message').val()}));
+    
+	$('#submit').click(function(event) {
+	event.preventDefault();
+		if ($('#message').val()!= "") {
+		   websocket.send(JSON.stringify({message: $('#message').val()}));
+		}
 	});
 
 	websocket.onmessage = function (evt) 

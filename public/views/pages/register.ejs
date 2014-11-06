@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1.0">
 	<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<link href="../..//stylesheets/style.css" rel="stylesheet">
-	<% include ../partials/loginhead %>
+	<% include ../partials/registerhead %>
 </head>
 
 <body>
@@ -15,17 +15,17 @@
 		<div id="main" style="padding:50px 0 0 0;">
 		
 		<!-- Form -->
-		<form id="contact-form" action="/" method="post">
+		<form id="form" action="/" method="post">
 			<h3>Please Register</h3>
 			<h4>Please write your username !</h4>
 			<div>
 				<label>
 					<span>Username: (required)</span>
-					<input id="username" placeholder="Please enter your name" type="text" tabindex="1" required autofocus>
+					<input id="username" placeholder="Please enter your username" type="text" tabindex="1" required autofocus>
 				</label>
 			</div>
 			<div>
-				<button id="submit" name="submit" type="submit" id="contact-submit">Register</button>
+				<button id="submit" name="submit" type="submit">Register</button>
 			</div>
 		</form>
 		<!-- /Form -->
