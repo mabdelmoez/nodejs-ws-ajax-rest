@@ -121,7 +121,6 @@ var wss = new WebSocketServer({server: app.server});
 
     ws.on("message", function (data, flags) {
         console.log("websocket received a message");
-        var clientMsg = data;
         var username = ws.session.username;
         ws.send(JSON.stringify({serverMsg:{username:username, message:JSON.parse(data).message}}));
     });
