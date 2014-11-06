@@ -1,4 +1,4 @@
-<!-- public/views/partials/ajaxhead.ejs -->
+<!-- public/views/partials/loginhead.ejs -->
 
 <meta charset="UTF-8">
 <script type="text/javascript">
@@ -7,20 +7,18 @@ $(document).ready(function () {
 		event.preventDefault();
 		
 		var dataObj = {
-		username:$('#username').val(),
-		message: $('#message').val()
+		username:$('#username').val()
 		};
 		 
 		$.ajax({
-		   url: 'http://127.0.0.1:5000/api/messaging',  
+		   url: 'http://127.0.0.1:5000/api/register',  
 		   async: true,
 		   type: 'POST',
 		   dataType: 'json',
 		   data:dataObj
 		   })
 		    .done(function(response) {
-			console.log( "success" );
-			$('#responseMsg').append(JSON.stringify(response)+ "\n");
+			$(location).attr('href',"http://127.0.0.1:5000/app");
 			})
 			.fail(function() {
 			console.log( "error" );

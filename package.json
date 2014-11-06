@@ -6,6 +6,8 @@
 		"ws":"0.4.x",
 		"express":"4.10.1",
 		"body-parser":"1.9.2",
-		"ejs":"1.0.0"
+		"ejs":"1.0.0",
+		"express-session":"1.9.1",
+		"path":"0.4.9"
 	}
 }

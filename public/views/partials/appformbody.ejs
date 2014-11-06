@@ -1,0 +1,30 @@
+<!-- public/views/partials/appformbody.ejs -->
+<meta charset="UTF-8">
+<body>
+	<div class="wrapper">
+		<div id="main" style="padding:50px 0 0 0;">
+		
+		<!-- Form -->
+		<form id="contact-form" action="/" method="post">
+			<h3>Welcome <%= username %> to XYZ Project</h3>
+			<h4>Please write your message to send to the server !</h4>
+			<div>
+				<label>
+					<span>Message: (required)</span>
+					<input id="message" placeholder="please enter your message to the server" type="text" tabindex="2" required>
+				</label>
+			</div>
+			<div>
+				<button id="submit" name="submit" type="submit" id="contact-submit">Send Message</button>
+			</div>
+		</form>
+		<!-- /Form -->
+		<div>
+			<label>
+				<span>Server response:</span>
+				<textarea id="responseMsg" rows="4" cols="60" tabindex="3" readonly></textarea>
+			</label>
+		</div>
+		</div>
+	</div>	
+</body>
