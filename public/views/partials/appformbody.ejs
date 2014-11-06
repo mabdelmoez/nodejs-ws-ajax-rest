@@ -5,17 +5,17 @@
 		<div id="main" style="padding:50px 0 0 0;">
 		
 		<!-- Form -->
-		<form id="form" action="#" method="post">
+		<form id="form" onSubmit="submitMessageForm();"">
 			<h3>Welcome <%= username %> to XYZ Project</h3>
 			<h4>Please write your message to send to the server !</h4>
 			<div>
 				<label>
 					<span>Message: (required)</span>
-					<input id="message" placeholder="please enter your message to the server" type="text" tabindex="2" required>
+					<input id="message" pattern="[\S]{1,25}" oninvalid="Helper.bindInvalidInputMsg(this, 'Please no spaces at end or beginning');" oninput="Helper.bindInvalidInputMsg(this, 'Please no spaces at end or beginning');"  placeholder="please enter your message to the server" type="text" tabindex="2" required>
 				</label>
 			</div>
 			<div>
-				<button id="submit" name="submit" name="message"  type="submit">Send Message</button>
+				<button id="submit" name="submit" type="submit">Send Message</button>
 			</div>
 		</form>
 		<!-- /Form -->

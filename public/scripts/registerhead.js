@@ -1,12 +1,18 @@
+/*$.getScript("https://raw.githubusercontent.com/mabdelmoez/nodejs-ws-ajax-rest/master/public/scripts/helper.js", function(){
+	console.log("Helper script loaded");
+});*/
+
+//Helper.bindInvalidInputMsg($('#username'), "Please enter alphanumeric without spaces");
+
 $(document).ready(function () {
-	$('#submit').click(function(event){
-		event.preventDefault();
-		if ($('#username').val() != "") {
-		    
+	$('#form').submit(function(event){event.preventDefault();});
+});
+
+submitRegisterationForm = function(){
+		if (Helper.isValidUsername($('#username').val())) {
 		    var dataObj = {
 			username:$('#username').val()
 			};
-			 
 			$.ajax({
 			   url: 'http://127.0.0.1:5000/api/register',  
 			   async: true,
@@ -24,7 +30,5 @@ $(document).ready(function () {
 				console.log( "complete" );
 	        });
 		}
-		
-	});
-	
-});
+	//return false;
+}
