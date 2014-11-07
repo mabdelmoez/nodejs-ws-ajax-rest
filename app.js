@@ -11,6 +11,27 @@ var store  = new session.MemoryStore;
 var cookieSettings = {path: '/', httpOnly: false, maxAge: null};
 var sessionHandler = session({ secret: 'secret', store: store, saveUninitialized: true, resave: true, cookie: cookieSettings, rolling: true, signed: true});
 
+var HelperServer = (function() {
+    return {
+    	isValidUsername:function(fieldName) {
+        	return (fieldName.length != 0 && fieldName.length <= 25 && (/^[A-Za-z0-9\d]+$/.test(fieldName))); // alphanum does not have any spaces, no special characters from 1-25 chrs
+        },
+        isValidMessage:function(fieldName) {
+        	return (fieldName.length != 0 && fieldName.length <= 25 && !(/\s/.test(fieldName))); //anything but no spaces 1-25 chrs
+        },
+        isJSON:function(string){
+        	try{
+        		JSON.parse(string);
+        		return true;
+        	}
+        	catch(e){
+        		return false;
+        	}
+        }
+    }   
+}());
+
+
 
 	app.set('view engine', 'ejs');
 	app.set('views', __dirname + '/public/views');
@@ -69,24 +90,35 @@ var sessionHandler = session({ secret: 'secret', store: store, saveUninitialized
 	  		 res.redirect('/');
 	  	}
 
-});
+	});
 
    
 		
 	app.get('/api/messaging', function(req, res, next) {
 		 console.log('received api messaging get request');
-		 res.json(req.body);
+		 res.json(req.body); //just a test
     });
     
 	app.post('/api/messaging', function(req, res, next) {
        console.log('receiving api post request');
-	   res.send(JSON.stringify({serverMsg:{username:req.session.username, message:req.body.message}}));
+       if(HelperServer.isJSON(JSON.stringify(req.body)) && HelperServer.isValidMessage(req.body.message)){
+    	   res.send(JSON.stringify({serverMsg:{username:req.session.username, message:req.body.message}}));
+           }
+       else{
+       	console.log("Wrong message format detected"); //To be modified later to send feedback to user from server
+       }
     });
 	
 	app.post('/api/register', function(req, res, next) {
-	       console.log('receiving register api post request');
-	       req.session.username = req.body.username;
-		   res.json({msg:"OK"});
+	       if(HelperServer.isJSON(JSON.stringify(req.body)) && HelperServer.isValidUsername(req.body.username)){
+	    	   req.session.username = req.body.username;
+			   res.json({msg:"Created"});
+	           }
+	       else{
+	       	console.log("Wrong message format detected"); //To be modified later to send feedback to user from server
+	       	   res.json({msg:"Not Created"});
+	       }
+	       
 	});
 	
 	
@@ -97,7 +129,7 @@ var sessionHandler = session({ secret: 'secret', store: store, saveUninitialized
     console.log("app server listening on %d", port);
 
 
-var wss = new WebSocketServer({server: app.server});
+	var wss = new WebSocketServer({server: app.server});
 
     wss.on("connection", function (ws) {
     
@@ -122,10 +154,15 @@ var wss = new WebSocketServer({server: app.server});
     ws.on("message", function (data, flags) {
         console.log("websocket received a message");
         var username = ws.session.username;
+        if(HelperServer.isJSON(data) && HelperServer.isValidMessage(JSON.parse(data).message)){
         ws.send(JSON.stringify({serverMsg:{username:username, message:JSON.parse(data).message}}));
+        }
+        else{
+        	console.log("Wrong message format detected"); //To be modified later to send feedback to user from server
+        }
     });
 
     ws.on("close", function () {
         console.log("websocket connection close");
     });
-});
+	});

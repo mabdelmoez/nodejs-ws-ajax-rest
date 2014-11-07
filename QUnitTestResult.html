@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Project XYZ | Live Reloading Qunit Testing</title>
+        <!-- To Test -->
+        <script  type="text/javascript" src="public/scripts/helper.js"></script>
+        <script  type="text/javascript" src="public/scripts/websockethead.js"></script>
+        <!-- Style -->
+        <link href="QUnit/Env/css/qunit.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <!-- Mark Up required by QUnit -->
+        <div id="qunit"></div>
+        <div id="qunit-fixture"></div>
+ 
+        <!-- Libs -->
+        <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="QUnit/Env/lib/qunit.js"></script>
+        <!-- Src -->
+        <script type="text/javascript" src="QUnit/tests.js"></script>
+        <!-- LiveReload script served by Grunt -->
+        <script type="text/javascript" src="http://localhost:35729/livereload.js"></script>
+ 
+    </body>
+</html>

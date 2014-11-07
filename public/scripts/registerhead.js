@@ -1,8 +1,3 @@
-/*$.getScript("https://raw.githubusercontent.com/mabdelmoez/nodejs-ws-ajax-rest/master/public/scripts/helper.js", function(){
-	console.log("Helper script loaded");
-});*/
-
-//Helper.bindInvalidInputMsg($('#username'), "Please enter alphanumeric without spaces");
 
 $(document).ready(function () {
 	$('#form').submit(function(event){event.preventDefault();});

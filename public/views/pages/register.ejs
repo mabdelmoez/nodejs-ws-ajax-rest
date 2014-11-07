@@ -22,7 +22,7 @@
 			<div>
 				<label>
 					<span>Username: (required)</span>
-					<input id="username" pattern="[A-Za-z0-9\S]{1,25}" oninvalid="Helper.bindInvalidInputMsg(this, 'Please enter alphanumeric withoutspaces');" oninput="Helper.bindInvalidInputMsg(this, 'Please enter alphanumeric withoutspaces');" type="text" tabindex="1" required autofocus>
+					<input id="username" pattern="[A-Za-z0-9\d]{1,25}" oninvalid="Helper.bindInvalidInputMsg(this, 'Please enter 1-25 chrs alphanumeric withoutspaces');" oninput="Helper.bindInvalidInputMsg(this, 'Please enter 1-25 chrs alphanumeric withoutspaces');" type="text" tabindex="1" required autofocus>
 				</label>
 			</div>
 			<div>

@@ -1,7 +1,3 @@
-/*$.getScript("https://raw.githubusercontent.com/mabdelmoez/nodejs-ws-ajax-rest/master/public/scripts/helper.js", function(){
-	console.log("Helper script loaded");
-});*/
-
 
 $(document).ready(function () {
 	$('#form').submit(function(event){event.preventDefault();});
