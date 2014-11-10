@@ -1,5 +1,6 @@
 nodejs-ws-ajax-rest
 ===================
+Nodejs-ws-ajax-rest
 
 Project workflow :
 1- Client registers with username (kept in session.cookies)
